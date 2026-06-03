@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Menu Cafe HTS</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+header{
+    background:#6F4E37;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:40px;
+}
+
+header p{
+    margin-top:10px;
+}
+
+nav{
+    background:#4E342E;
+    padding:15px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+}
+
+.title{
+    text-align:center;
+    color:#6F4E37;
+    margin-bottom:30px;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card h2{
+    color:#6F4E37;
+    margin-bottom:15px;
+    border-bottom:2px solid #6F4E37;
+    padding-bottom:10px;
+}
+
+.menu-item{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.menu-item:last-child{
+    border:none;
+}
+
+footer{
+    margin-top:40px;
+    background:#4E342E;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>☕ Cafe HTS</h1>
+    <p>Daftar Menu Makanan & Minuman</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#minuman">Minuman</a></li>
+        <li><a href="#makanan">Makanan</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+<h1 class="title">Menu Favorit Kami</h1>
+
+<div class="menu-grid">
+
+<div class="card" id="minuman">
+
+<h2>☕ Minuman</h2>
+
+<div class="menu-item">
+<span>Es Kopi Susu</span>
+<span>Rp20.000</span>
+</div>
+
+<div class="menu-item">
+<span>Caramel Latte</span>
+<span>Rp25.000</span>
+</div>
+
+<div class="menu-item">
+<span>Matcha Latte</span>
+<span>Rp25.000</span>
+</div>
+
+<div class="menu-item">
+<span>Thai Tea</span>
+<span>Rp18.000</span>
+</div>
+
+<div class="menu-item">
+<span>Chocolate Premium</span>
+<span>Rp22.000</span>
+</div>
+
+</div>
+
+<div class="card" id="makanan">
+
+<h2>🍔 Makanan</h2>
+
+<div class="menu-item">
+<span>Croffle</span>
+<span>Rp20.000</span>
+</div>
+
+<div class="menu-item">
+<span>French Fries</span>
+<span>Rp15.000</span>
+</div>
+
+<div class="menu-item">
+<span>Brownies</span>
+<span>Rp18.000</span>
+</div>
+
+<div class="menu-item">
+<span>Red Velvet Cake</span>
+<span>Rp25.000</span>
+</div>
+
+<div class="menu-item">
+<span>Chicken Burger</span>
+<span>Rp28.000</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+    <p>© 2026 Cafe HTS | Tio Al Farizi</p>
+</footer>
+
+</body>
+</html>
