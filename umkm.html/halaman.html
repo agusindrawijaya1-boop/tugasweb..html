@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Glass UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg"></div>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar container glass">
+        <h1 class="logo">AgusDev</h1>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Layanan</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+    <div class="hero-content glass">
+        <div class="text">
+            <h2>Website Premium Modern</h2>
+            <p>Desain elegan dengan efek glassmorphism dan responsif di semua device.</p>
+            <a href="#" class="btn">Mulai Sekarang</a>
+        </div>
+        <div class="image">
+            <img src="https://picsum.photos/500/300">
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features container">
+    <div class="card glass">⚡ Cepat & Ringan</div>
+    <div class="card glass">📱 Fully Responsive</div>
+    <div class="card glass">🎨 UI Modern</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="glass">
+    <p>© 2026 Agus Indra Wijaya</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const nav = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
