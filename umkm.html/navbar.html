@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UMKM Agus</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: #00f5ff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00f5ff;
+}
+
+/* BUTTON */
+.btn {
+    background: #00f5ff;
+    color: #000 !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 4px;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#1e1e2f,#2a2a40);
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+/* SECTION */
+section {
+    padding: 80px 50px;
+}
+
+/* PRODUK GRID */
+.produk-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.produk {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 70px;
+        background: black;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">UMKM Agus</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#" class="btn">Login</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <h1>Selamat Datang di UMKM Agus 🚀</h1>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+    <h2>Produk Kami</h2>
+    <div class="produk-container">
+        <div class="produk">Produk 1</div>
+        <div class="produk">Produk 2</div>
+        <div class="produk">Produk 3</div>
+    </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+    <h2>Tentang Kami</h2>
+    <p>Kami adalah UMKM yang menyediakan produk berkualitas tinggi.</p>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+    <h2>Kontak</h2>
+    <p>Email: agus@email.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 UMKM Agus</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
