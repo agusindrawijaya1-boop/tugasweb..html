@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Premium</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .container {
+      width: 350px;
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      box-shadow: 0 0 5px #fff;
+    }
+
+    .error {
+      font-size: 12px;
+      color: #ff6b6b;
+      margin-top: 5px;
+    }
+
+    .success {
+      border: 2px solid #1dd1a1;
+    }
+
+    .invalid {
+      border: 2px solid #ff6b6b;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1dd1a1;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #10ac84;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Register</h2>
+
+    <div class="input-group">
+      <input type="text" id="nama" placeholder="Nama Lengkap">
+      <div id="errorNama" class="error"></div>
+    </div>
+
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email">
+      <div id="errorEmail" class="error"></div>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password">
+      <span class="toggle-password" onclick="togglePassword()">👁</span>
+      <div id="errorPassword" class="error"></div>
+    </div>
+
+    <button onclick="validateForm()">Daftar</button>
+  </div>
+
+  <script>
+    function validateForm() {
+      const nama = document.getElementById("nama");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+
+      const errorNama = document.getElementById("errorNama");
+      const errorEmail = document.getElementById("errorEmail");
+      const errorPassword = document.getElementById("errorPassword");
+
+      let valid = true;
+
+      // Reset
+      [nama, email, password].forEach(i => i.classList.remove("invalid","success"));
+      errorNama.innerText = "";
+      errorEmail.innerText = "";
+      errorPassword.innerText = "";
+
+      // Validasi Nama
+      if (nama.value.trim().length < 3) {
+        errorNama.innerText = "Minimal 3 karakter";
+        nama.classList.add("invalid");
+        valid = false;
+      } else {
+        nama.classList.add("success");
+      }
+
+      // Validasi Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        errorEmail.innerText = "Email tidak valid";
+        email.classList.add("invalid");
+        valid = false;
+      } else {
+        email.classList.add("success");
+      }
+
+      // Validasi Password
+      if (password.value.length < 6) {
+        errorPassword.innerText = "Minimal 6 karakter";
+        password.classList.add("invalid");
+        valid = false;
+      } else {
+        password.classList.add("success");
+      }
+
+      if (valid) {
+        alert("Registrasi berhasil!");
+      }
+    }
+
+    function togglePassword() {
+      const pass = document.getElementById("password");
+      pass.type = pass.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>

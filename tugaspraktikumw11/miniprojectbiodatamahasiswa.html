@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Biodata Mahasiswa</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .output {
+      margin-top: 20px;
+      text-align: left;
+      padding: 10px;
+      border-radius: 5px;
+      background: #f1f1f1;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Biodata Mahasiswa</h2>
+
+    <input type="text" id="nama" placeholder="Masukkan Nama">
+    <input type="text" id="nim" placeholder="Masukkan NIM">
+
+    <button onclick="tampilkanData()">Tampilkan</button>
+
+    <div class="output" id="hasil">
+      <p><strong>Nama:</strong> <span id="outNama"></span></p>
+      <p><strong>NIM:</strong> <span id="outNim"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function tampilkanData() {
+      const nama = document.getElementById("nama").value;
+      const nim = document.getElementById("nim").value;
+
+      const outNama = document.getElementById("outNama");
+      const outNim = document.getElementById("outNim");
+      const hasil = document.getElementById("hasil");
+
+      if (nama === "" || nim === "") {
+        alert("Harap isi semua data!");
+        return;
+      }
+
+      // DOM Manipulation
+      outNama.innerText = nama;
+      outNim.innerText = nim;
+
+      hasil.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

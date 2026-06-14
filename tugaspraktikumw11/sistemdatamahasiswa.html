@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistem Data Mahasiswa</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .simpan { background: #28a745; }
+    .tampil { background: #007bff; }
+
+    table {
+      width: 100%;
+      margin-top: 15px;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Data Mahasiswa</h2>
+
+  <input type="text" id="nama" placeholder="Masukkan Nama">
+  <input type="number" id="nilai" placeholder="Masukkan Nilai">
+
+  <br>
+  <button class="simpan" id="btnSimpan">Simpan</button>
+  <button class="tampil" id="btnTampil">Tampilkan</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+  // Array untuk menyimpan data
+  let dataMahasiswa = [];
+
+  // Ambil elemen DOM
+  const namaInput = document.getElementById("nama");
+  const nilaiInput = document.getElementById("nilai");
+  const output = document.getElementById("output");
+
+  const btnSimpan = document.getElementById("btnSimpan");
+  const btnTampil = document.getElementById("btnTampil");
+
+  // Event: klik tombol simpan
+  btnSimpan.addEventListener("click", simpanData);
+
+  // Event: klik tombol tampilkan
+  btnTampil.addEventListener("click", tampilkanData);
+
+  // Fungsi simpan data
+  function simpanData() {
+    const nama = namaInput.value.trim();
+    const nilai = nilaiInput.value;
+
+    if (nama === "" || nilai === "") {
+      alert("Data harus diisi!");
+      return;
+    }
+
+    // Simpan ke array (object)
+    dataMahasiswa.push({
+      nama: nama,
+      nilai: nilai
+    });
+
+    // Reset input
+    namaInput.value = "";
+    nilaiInput.value = "";
+
+    alert("Data berhasil disimpan!");
+  }
+
+  // Fungsi tampilkan data
+  function tampilkanData() {
+    if (dataMahasiswa.length === 0) {
+      output.innerHTML = "<p>Belum ada data</p>";
+      return;
+    }
+
+    let html = `
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Nilai</th>
+        </tr>
+    `;
+
+    dataMahasiswa.forEach((mhs, index) => {
+      html += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${mhs.nama}</td>
+          <td>${mhs.nilai}</td>
+        </tr>
+      `;
+    });
+
+    html += "</table>";
+
+    // DOM: tampilkan ke halaman
+    output.innerHTML = html;
+  }
+</script>
+
+</body>
+</html>

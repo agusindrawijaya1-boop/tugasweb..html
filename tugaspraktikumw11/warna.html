@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Ubah Warna Teks</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #teks {
+      font-size: 30px;
+      color: black;
+      transition: 0.3s;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: blue;
+      color: white;
+    }
+
+    button:hover {
+      background-color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="teks">Ini adalah teks</h1>
+
+  <button onclick="ubahWarna()">Ubah Warna</button>
+
+  <script>
+    function ubahWarna() {
+  const warna = ["red", "blue", "green", "purple", "orange"];
+  const teks = document.getElementById("teks");
+  const random = warna[Math.floor(Math.random() * warna.length)];
+
+  teks.style.color = random;
+}
+    
+  </script>
+
+</body>
+</html>

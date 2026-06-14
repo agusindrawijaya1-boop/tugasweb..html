@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Biodata Interaktif</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #ffffff;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background-color: #f1f1f1;
+    }
+
+    .biodata {
+      margin: 20px auto;
+      padding: 20px;
+      width: 320px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: 0.4s ease;
+      display: none;
+    }
+
+    .biodata.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .biodata p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Profil Saya</h1>
+
+  <button class="btn" onclick="toggleBiodata()" id="btnText">
+    Tampilkan Biodata
+  </button>
+
+  <div class="biodata" id="biodataBox">
+    <p><strong>Nama:</strong> Agus Indra</p>
+    <p><strong>Umur:</strong> 17 Tahun</p>
+    <p><strong>Alamat:</strong> tangerang</p>
+    <p><strong>Hobi:</strong> Coding</p>
+  </div>
+
+  <script>
+    function toggleBiodata() {
+      const box = document.getElementById("biodataBox");
+      const btn = document.getElementById("btnText");
+
+      box.classList.toggle("show");
+
+      if (box.classList.contains("show")) {
+        btn.innerText = "Sembunyikan Biodata";
+      } else {
+        btn.innerText = "Tampilkan Biodata";
+      }
+    }
+  </script>
+
+</body>
+</html>
