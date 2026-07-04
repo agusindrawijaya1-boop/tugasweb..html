@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Mahasiswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+h2 {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #3498db;
+  color: white;
+}
+
+.edit {
+  background: orange;
+}
+
+.hapus {
+  background: red;
+}
+
+  </style>
+</head>
+<body>
+
+<h2>Data Mahasiswa</h2>
+
+<div class="form">
+  <input type="text" id="nama" placeholder="Nama">
+  <input type="text" id="nim" placeholder="NIM">
+  <input type="text" id="prodi" placeholder="Program Studi">
+  <button onclick="simpan()">Simpan</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama</th>
+      <th>NIM</th>
+      <th>Prodi</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id="tabel"></tbody>
+</table>
+
+<script>
+  let data = JSON.parse(localStorage.getItem("mahasiswa")) || [];
+  let editIndex = -1;
+
+  function tampilkan() {
+    let tabel = document.getElementById("tabel");
+    tabel.innerHTML = "";
+
+    data.forEach((mhs, index) => {
+      tabel.innerHTML += `
+        <tr>
+          <td>${mhs.nama}</td>
+          <td>${mhs.nim}</td>
+          <td>${mhs.prodi}</td>
+          <td>
+            <button class="edit" onclick="edit(${index})">Edit</button>
+            <button class="hapus" onclick="hapus(${index})">Hapus</button>
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  function simpan() {
+    let nama = document.getElementById("nama").value;
+    let nim = document.getElementById("nim").value;
+    let prodi = document.getElementById("prodi").value;
+
+    if (nama === "" || nim === "" || prodi === "") {
+      alert("Semua field harus diisi!");
+      return;
+    }
+
+    if (editIndex === -1) {
+      data.push({ nama, nim, prodi });
+    } else {
+      data[editIndex] = { nama, nim, prodi };
+      editIndex = -1;
+    }
+
+    localStorage.setItem("mahasiswa", JSON.stringify(data));
+    resetForm();
+    tampilkan();
+  }
+
+  function edit(index) {
+    document.getElementById("nama").value = data[index].nama;
+    document.getElementById("nim").value = data[index].nim;
+    document.getElementById("prodi").value = data[index].prodi;
+    editIndex = index;
+  }
+
+  function hapus(index) {
+    if (confirm("Yakin ingin menghapus data?")) {
+      data.splice(index, 1);
+      localStorage.setItem("mahasiswa", JSON.stringify(data));
+      tampilkan();
+    }
+  }
+
+  function resetForm() {
+    document.getElementById("nama").value = "";
+    document.getElementById("nim").value = "";
+    document.getElementById("prodi").value = "";
+  }
+
+  tampilkan();
+  
+ src="script.js"
+
+</script>
+
+</body>
+</html.\>
