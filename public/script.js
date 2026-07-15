@@ -1,39 +1,94 @@
-let editId = null;
+const API = "/students";
 
-async function loadData(){
+const form = document.getElementById("studentForm");
 
-   const response = await fetch("/api/mahasiswa");
+const table = document.getElementById("studentTable");
 
-   const data = await response.json();
+async function loadStudents() {
+function tambahData() {
+  const nama = document.getElementById("nama").value;
+  const nim = document.getElementById("nim").value;
+  const prodi = document.getElementById("prodi").value;
+  const alamat = document.getElementById("alamat").value;
 
-   let html="";
+  fetch("http://localhost:3000/students", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ nama, nim, prodi, alamat })
+  })
+  .then(res => res.json())
+  .then(() => loadData());
+}
+    const response = await fetch(API);
 
-   data.forEach(item=>{
+    const result = await response.json();
 
-       html+=`
+    table.innerHTML = "";
 
-       <tr>
+    result.data.forEach(student => {
 
-           <td>${item.nama}</td>
+        table.innerHTML += `
 
-           <td>${item.nim}</td>
+        <tr>
 
-           <td>${item.prodi}</td>
+            <td>${student.id}</td>
 
-           <td>
+            <td>${student.npm}</td>
 
-               <button onclick="edit(${item.id})">Edit</button>
+            <td>${student.nama}</td>
 
-               <button onclick="hapus(${item.id})">Delete</button>
+            <td>${student.jurusan}</td>
 
-           </td>
+            <td>${student.semester}</td>
 
-       </tr>
+            <td>${student.email}</td>
 
-       `;
+        </tr>
 
-   });
+        `;
 
-   document.getElementById("tabelMahasiswa").innerHTML=html;
+    });
 
 }
+
+loadStudents();
+
+form.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const student={
+
+        npm:npm.value,
+
+        nama:nama.value,
+
+        jurusan:jurusan.value,
+
+        semester:semester.value,
+
+        email:email.value
+
+    };
+
+    await fetch(API,{
+
+        method:"POST",
+
+        headers:{
+
+            "Content-Type":"application/json"
+
+        },
+
+        body:JSON.stringify(student)
+
+    });
+
+    form.reset();
+
+    loadStudents();
+
+});
